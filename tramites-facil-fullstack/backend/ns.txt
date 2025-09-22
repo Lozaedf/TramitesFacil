@@ -1,0 +1,203 @@
+Lozaedf/TramitesFacil
+main
+
+GITHUB
+
+necesito que con esta misma estructura y todo  Autenticación
+* POST /api/register → Registrar usuario
+* POST /api/login → Iniciar sesión
+Oficinas
+* GET /api/oficinas → Listar todas las oficinas
+* GET /api/oficinas/:id → Ver detalle de una oficina
+* GET /api/oficinas/:id/disponibilidad → Ver horarios y turnos libres de esa oficina
+Horarios / Disponibilidad
+* GET /api/oficinas/:id/horarios → Listar todos los horarios posibles de la oficina (ocupados y libres)
+* GET /api/oficinas/:id/horarios/:fecha → Ver horarios libres para una fecha específica
+* GET /api/tramites/:id/disponibilidad → Ver horarios disponibles por trámite
+Citas (Usuario)
+* POST /api/citas → Crear una cita (seleccionando oficina, trámite y horario)
+* GET /api/citas → Listar todas mis citas
+* GET /api/citas/:id → Ver detalle de una cita
+* PUT /api/citas/:id → Modificar cita (reagendar, cambiar trámite, etc.)
+* PUT /api/citas/:id/confirmar → Confirmar asistencia
+* DELETE /api/citas/:id → Cancelar cita
+* GET /api/citas/:id/estado → Ver estado de una cita (pendiente, confirmada, cancelada)
+* GET /api/oficinas/:id/citas → Ver todas las citas agendadas en una oficina: con estos endpoints y despues tambien hace que la base de datos sea local con xampp y despues hace una base de datos para estas utilidades y arregla el swagger si podes
+
+Te ayudo a crear una API completa para un sistema de citas con autenticación. Voy a crear todos los endpoints que solicitas manteniendo la misma estructura del proyecto.
+
+Base de Datos - Sistema de Citas
+Código 
+Ahora voy a crear los modelos para el nuevo sistema:
+
+models/userModel.js
+Código 
+models/oficinaModel.js
+Código 
+models/tramiteModel.js
+Código 
+models/citaModel.js
+Código 
+Ahora voy a crear los controladores:
+
+controllers/authController.js
+Código 
+controllers/oficinaController.js
+Código 
+Continuar
+
+controllers/oficinaController.js
+Código ∙ Versión 2 
+controllers/tramiteController.js
+Código 
+controllers/citaController.js
+Código 
+Ahora voy a crear el middleware de autenticación:
+
+middlewares/authMiddleware.js
+Código 
+Ahora voy a crear las rutas:
+
+routes/authRoutes.js
+Código 
+routes/oficinaRoutes.js
+Código 
+routes/tramiteRoutes.js
+Código 
+routes/citaRoutes.js
+Código 
+Continuar
+
+routes/citaRoutes.js
+Código ∙ Versión 2 
+Ahora voy a actualizar el archivo principal de la aplicación:
+
+app.js (Actualizado)
+Código 
+Ahora voy a actualizar el archivo de configuración de Swagger:
+
+config/swaggerConfig.js (Actualizado)
+Código 
+Ahora voy a actualizar el archivo de configuración de la base de datos para que sea compatible con XAMPP/MySQL local:
+
+config/db.js (Actualizado para XAMPP)
+Código 
+Ahora voy a crear el archivo package.json actualizado con las nuevas dependencias:
+
+package.json (Actualizado)
+Código 
+Finalmente, voy a crear el archivo .env de ejemplo:
+
+.env.example
+Código 
+Ahora voy a crear un archivo README con las instrucciones de instalación y uso:
+
+README.md
+Documento 
+🎉 ¡Sistema Completo Creado!
+He creado un sistema completo de API para gestión de citas con todas las funcionalidades que solicitaste:
+
+✅ Funcionalidades Implementadas:
+Autenticación completa con JWT
+Registro de usuarios
+Login con encriptación de contraseñas
+Middleware de autenticación
+Gestión de Oficinas
+Listar oficinas con trámites disponibles
+Ver detalles con horarios y disponibilidad
+Sistema de horarios dinámicos
+Sistema de Trámites
+CRUD de trámites
+Verificación de disponibilidad por trámite
+Gestión Completa de Citas
+Crear citas con validaciones
+Modificar/reagendar citas
+Confirmar asistencia
+Cancelar con motivo
+Ver estado de citas
+🗄️ Base de Datos MySQL (Compatible con XAMPP):
+Esquema completo con 6 tablas relacionadas
+Datos de ejemplo incluidos
+Procedimiento para generar horarios automáticamente
+Configuración optimizada para XAMPP
+📚 Documentación Swagger Completa:
+Interfaz interactiva en /docs
+Todos los endpoints documentados
+Esquemas de request/response
+Ejemplos de uso
+🛠️ Instalación Rápida:
+Instalar XAMPP y ejecutar MySQL
+Crear base de datos:
+sql
+   -- Ejecutar el script SQL completo en phpMyAdmin
+Configurar proyecto:
+bash
+   npm install
+   cp .env.example .env
+   npm run dev
+Acceder a:
+API: http://localhost:4000
+Documentación: http://localhost:4000/docs
+🎯 Endpoints Principales:
+Auth: /api/register, /api/login
+Oficinas: /api/oficinas (con filtros y disponibilidad)
+Citas: /api/citas (CRUD completo)
+Trámites: /api/tramites (con disponibilidad)
+🔐 Seguridad:
+JWT tokens con expiración
+Contraseñas encriptadas con bcrypt
+Validaciones de autorización
+Middleware de autenticación
+¿Te gustaría que agregue alguna funcionalidad adicional o que modifique algo específico del sistema?
+
+
+poneme la estructura de las carpetas
+
+Estructura Completa del Proyecto
+Documento 
+🎯 Estructura Completa del Proyecto
+He creado la estructura completa de carpetas y archivos para tu sistema de citas. La estructura está organizada siguiendo las mejores prácticas de Node.js/Express:
+
+📁 Carpetas Principales:
+config/ - Configuraciones (DB, Swagger)
+controllers/ - Lógica de negocio
+middlewares/ - Middlewares personalizados
+models/ - Modelos de datos y consultas DB
+routes/ - Definición de endpoints
+database/ - Scripts SQL
+🔧 Archivos Principales:
+app.js - Configuración de Express
+server.js - Punto de entrada
+package.json - Dependencias actualizadas
+📚 Documentación Incluida:
+README.md - Guía completa de instalación
+Swagger docs - En /docs
+⚡ Instalación Rápida:
+bash
+# 1. Crear proyecto
+mkdir sistema-citas-api && cd sistema-citas-api
+
+# 2. Copiar todos los archivos del proyecto
+
+# 3. Instalar dependencias
+npm install
+
+# 4. Configurar XAMPP/MySQL y ejecutar script SQL
+
+# 5. Configurar .env
+cp .env.example .env
+
+# 6. Ejecutar
+npm run dev
+🎯 URLs de Acceso:
+API Base: http://localhost:4000
+Documentación: http://localhost:4000/docs
+Ejemplo: http://localhost:4000/api/oficinas
+¿Te gustaría que te ayude con algún archivo específico o tienes alguna pregunta sobre la estructura?
+
+
+
+
+Límite de 5 horas alcanzado ∙ se restablece 6:00 p.m.
+Actualizar
+
